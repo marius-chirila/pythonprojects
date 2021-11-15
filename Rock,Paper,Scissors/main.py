@@ -32,7 +32,7 @@ player_choice = int(input("What do you choose ? Type 0 for Rock, 1 for Paper or 
 
 options = [rock, paper, scissors]
 
-if player_choice >= 3:
+if player_choice >= 3 or player_choice < 0:
     print("You have chosen a wrong number")
 else:
     print(f"You have chosen: \n {options[player_choice]}")
