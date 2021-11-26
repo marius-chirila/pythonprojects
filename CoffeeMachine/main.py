@@ -1,5 +1,6 @@
 from data import MENU, resources
 import os
+from art import logo
 
 def clear():
     os.system('cls' if os.name=="nt" else 'clear')
@@ -16,6 +17,11 @@ def process_money(type1, type2, type3, type4, type_of_coffee):
         resources["money"] += MENU[type_of_coffee]["cost"]
         rest = total_money - MENU[type_of_coffee]["cost"]
         print(f'Here is your ${round(rest,2)} in change.')
+        return True
+    elif total_money == MENU[type_of_coffee]["cost"]:
+        resources["money"] += MENU[type_of_coffee]["cost"]
+        rest = total_money - MENU[type_of_coffee]["cost"]
+        print(f"You inserted the exact amount of money.")
         return True
     else:
         print(f"Sorry that's not enough money. Money refunded.")
@@ -40,7 +46,8 @@ def check_resources(type):
             return False
     return True
 
-
+clear()
+print(logo)
 turn_off = False
 while not turn_off:
     choice = input(" What would you like ? (espresso/latte/cappuccino):").lower()
@@ -53,9 +60,9 @@ while not turn_off:
         if check_resources(choice):
             print(f'Please insert coins. A {choice} costs ${MENU[choice]["cost"]}')
             quarters = int(input("How many quarters?: "))
-            dimes = int(input("How many quarters?: "))
-            nickles = int(input("How many quarters?: "))
-            pennies = int(input("How many quarters?: "))
+            dimes = int(input("How many dimes?: "))
+            nickles = int(input("How many nickles?: "))
+            pennies = int(input("How many pennies?: "))
             if(process_money(quarters, dimes, nickles, pennies, choice)):
                 make_coffee(choice)
             else:
