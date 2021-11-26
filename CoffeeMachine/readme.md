@@ -4,6 +4,8 @@ Easy coffee vending machine code which offers 3 choices of beverages and operate
 Coffee, Latte or Cappuccino. 
 
 You can use it by typing the required beverage, type the number and type of coins inserted, and you'll receive the coffee and change if there are sufficient resources inside the coffee vending machine.
+Type "report" to see the resources present.
+Type "off" to shut down the vending machine.
 
 ## Example
 ```py
