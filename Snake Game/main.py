@@ -1,15 +1,25 @@
-from turtle import Turtle, Screen
+from turtle import Screen
+from snake import Snake
+import time
 
 screen = Screen()
 screen.bgcolor("black")
 screen.setup(600, 600)
 screen.title("Snake Game")
+screen.tracer(0)
 
-x = 0
-for i in range (3):
-    globals()[f"snake_{i}"] = Turtle("square") 
-    globals()[f"snake_{i}"].penup()
-    globals()[f"snake_{i}"].color("white")
-    globals()[f"snake_{i}"].goto(x,0)
-    x -= 20
+#creates snake
+snake = Snake()
+screen.listen()
+
+#moving snake - block/by/block
+game_is_on = True
+while game_is_on:
+    screen.update()
+    time.sleep(0.08)
+    snake.move()
+    
+        
+
+
 screen.exitonclick()
