@@ -59,3 +59,18 @@ class Snake(Turtle):
         if self.head.heading() != LEFT:
             self.head.seth(RIGHT)
 
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000, 1000)
+        self.segments.clear()
+        self.segments = []
+        for i in range (3):
+            globals()[f"snake_{i}"] = Turtle("square") 
+            globals()[f"snake_{i}"].penup()
+            globals()[f"snake_{i}"].color("white")
+            globals()[f"snake_{i}"].goto(self.x,0)
+            self.x -= 20
+            self.segments.append(globals()[f"snake_{i}"])
+        self.head = self.segments[0]
+
+
